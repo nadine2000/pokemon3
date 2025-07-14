@@ -18,9 +18,13 @@ resource "aws_instance" "game_server" {
   vpc_security_group_ids = [aws_security_group.game_sg.id]
   associate_public_ip_address = true
   key_name      = "gkey" 
-  user_data     = file("${path.module}/frontend.sh")
+  associate_public_ip_address = true
+
   tags = {
     Name = "GameServer"
+  }
+  provisioner "local-exec" {
+    command = "echo ${self.public_ip} > ../ansible/host_ip.txt"
   }
 }
 

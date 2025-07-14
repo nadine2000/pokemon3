@@ -1,6 +1,6 @@
 import requests
 
-API_BASE_URL = "http://localhost:5000"
+API_BASE_URL = "http://<private ip of the backend>:5000"
 
 
 def get_pokemon_from_db(name):
