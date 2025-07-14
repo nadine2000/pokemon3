@@ -17,34 +17,6 @@ if command -v yum &> /dev/null; then
     sudo usermod -aG docker $USER
 
     install_docker_compose
-
-
-# Ubuntu
-elif command -v apt &> /dev/null; then
-    echo "Detected apt-based system. Installing Git, Docker, and Docker Compose..."
-
-    # Update package info and install dependencies
-    sudo apt update -y
-    sudo apt install -y \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        gnupg \
-        lsb-release \
-        git
-
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-
-    # Install Docker Engine
-    sudo apt update -y
-    sudo apt install -y docker-ce docker-ce-cli containerd.io
-
-    # Start Docker and add user to docker group
-    sudo systemctl start docker
-    sudo systemctl enable docker
-    sudo usermod -aG docker $USER
-
-    install_docker_compose
 else
     echo "Unsupported package manager. Exiting."
     exit 1
