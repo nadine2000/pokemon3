@@ -58,14 +58,7 @@ terraform apply -auto-approve
 > 🔁 Save the **public** and **private IPs** of both backend and frontend EC2 instances.
 
 ---
-
-## 🚀 5. Run the Backend
-
-SSH into your backend instance:
-
-```bash
-ssh -i ~/.gkey.pem ec2-user@<backend_server_public_ip>
-```
+## 🚀 5. Now the backend server will Run automatically 
 ---
 
 ## 🎨 6. Run the Frontend
