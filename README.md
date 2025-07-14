@@ -67,7 +67,7 @@ terraform apply -auto-approve
 Edit the inventory:
 
 ```bash
-nano pokemon3/ansible/inventory.ini
+nano ../ansible/inventory.ini
 ```
 
 Add your frontend EC2 public IP:
@@ -82,7 +82,7 @@ Add your frontend EC2 public IP:
 ### b) Run Ansible Playbook
 
 ```bash
-cd pokemon3/ansible
+cd ../ansible
 ansible-playbook -i inventory.ini playbook.yml
 ```
 
