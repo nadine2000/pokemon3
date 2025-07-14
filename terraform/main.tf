@@ -17,7 +17,11 @@ resource "aws_instance" "game_server" {
   subnet_id     = aws_subnet.main_subnet.id
   vpc_security_group_ids = [aws_security_group.game_sg.id]
   associate_public_ip_address = true
+<<<<<<< HEAD
   key_name      = "gkey"
+=======
+  key_name      = "gkey" 
+>>>>>>> 9cae79ba02f0007470d78d1dbd54b52c147222ef
   tags = {
     Name = "GameServer"
   }
