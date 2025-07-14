@@ -1,39 +1,35 @@
-- name: userdata.sh with Ansible
-  hosts: frontend
-  become: true
+---
+- name: Ansible
+  hosts: all
+  become: yes
 
   tasks:
-    - name: Ubuntu
-      apt:
-        update_cache: yes
-      when: ansible_facts['pkg_mgr'] == "apt"
-
-    - name: Amazon Linux
-      yum:
-        name: "*"
+    - name: Update all packages (Amazon Linux 2023+ uses dnf)
+      dnf:
+        name: '*'
         state: latest
-      when: ansible_facts['pkg_mgr'] == "yum"
 
     - name: Install python3-pip and git
-      package:
-        name: 
+      dnf:
+        name:
           - python3-pip
           - git
         state: present
 
-    - name: Install requests using pip3
+    - name: Install Python requests package with pip3
       pip:
         name: requests
         executable: pip3
 
-    - name: Clone the GitHub repo
+    - name: Clone pokemon3 repo from GitHub
       git:
         repo: https://github.com/nadine2000/pokemon3
-        dest: /home/ubuntu/pokemon3
-        clone: yes
+        dest: /home/ec2-user/pokemon3
         update: yes
-
-    - name: Run the Python script
-      command: python3 main.py
-      args:
-        chdir: /home/ubuntu/pokemon3/frontend
+        
+    - name: Change ownership of the cloned repo to ec2-user
+      file:
+        path: /home/ec2-user/pokemon3
+        owner: ec2-user
+        group: ec2-user
+        recurse: yes
