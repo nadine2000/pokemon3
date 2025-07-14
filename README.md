@@ -125,9 +125,6 @@ To delete the key pair and remove infrastructure:
 ```bash
 aws ec2 delete-key-pair --key-name gkey
 rm ~/.gkey.pem
-```
-
-```bash
 cd pokemon3/terraform
 terraform destroy -auto-approve
 ```
