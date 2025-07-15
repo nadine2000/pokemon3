@@ -15,9 +15,6 @@ Make sure the following tools are installed on your **Ubuntu machine**:
 
 
 ##  1. Set Up AWS Credentials
-
-Run:
-
 ```bash
 nano ~/.aws/credentials
 ````
@@ -37,8 +34,6 @@ cd pokemon3
 ```bash
 chmod +x deploy.sh
 ```
-
----
 
 ### 4. Run the Frontend Setup Script
 
