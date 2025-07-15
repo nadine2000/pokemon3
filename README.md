@@ -29,16 +29,13 @@ cd pokemon3
 ```
 
 
-### 3. Make the Frontend Script Executable
+### 3. Make the deploy Script Executable
 
 ```bash
 chmod +x deploy.sh
 ```
 
-### 4. Run the Frontend Setup Script
-
-This script installs dependencies and prepares the frontend environment.
-
+### 4. Run the deploy Setup Script
 ```bash
 ./deploy.sh
 ```
