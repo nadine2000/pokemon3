@@ -2,8 +2,7 @@
   hosts: all
   become: yes
   vars:
-    backend_ip: "{{ lookup('pipe', 'terraform output -raw backend_server_private_ip') }}"
-
+    backend_ip: "{{ backend_ip }}"
   tasks:
     - name: Update all packages (Amazon Linux 2023+ uses dnf)
       dnf:
