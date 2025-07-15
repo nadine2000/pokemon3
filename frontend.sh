@@ -1,8 +1,5 @@
 #!/bin/bash
 
-git clone https://github.com/nadine2000/pokemon3
-cd pokemon3/terraform
-
 aws ec2 create-key-pair \
   --key-name gkey \
   --key-type rsa \
