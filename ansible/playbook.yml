@@ -27,8 +27,9 @@
         dest: /home/ec2-user/pokemon3
         update: yes
         
-    - name: Insert API_BASE_URL into db.py as first line
-      lineinfile:
-        path: /home/ec2-user/pokemon3/frontend/db.py
-        line: "API_BASE_URL = \"http://{{ backend_ip }}:5000\""
-        insertafter: BOF
+    - name: Change ownership of the cloned repo to ec2-user
+      file:
+        path: /home/ec2-user/pokemon3
+        owner: ec2-user
+        group: ec2-user
+        recurse: yes
