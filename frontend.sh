@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd terraform
+
 aws ec2 create-key-pair \
   --key-name gkey \
   --key-type rsa \
