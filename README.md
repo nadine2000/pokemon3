@@ -14,7 +14,7 @@ Make sure the following tools are installed on your **Ubuntu machine**:
 
 
 
-## 🔐 1. Set Up AWS Credentials
+##  1. Set Up AWS Credentials
 
 Run:
 
@@ -24,94 +24,31 @@ nano ~/.aws/credentials
 
 
 
-## 📦 2. Clone the Repository
+## 2. Clone the Repository
 
 ```bash
 git clone https://github.com/nadine2000/pokemon3
-cd pokemon3/terraform
+cd pokemon3
 ```
 
 
-
-## 🔑 3. Create SSH Key Pair
+### 3. Make the Frontend Script Executable
 
 ```bash
-aws ec2 create-key-pair \
-  --key-name gkey \
-  --key-type rsa \
-  --query 'KeyMaterial' \
-  --output text > ~/.gkey.pem
-
-chmod 400 ~/.gkey.pem
+chmod +x deploy.sh
 ```
 
+---
 
+### 4. Run the Frontend Setup Script
 
-## ⚙️ 4. Launch EC2 Instances with Terraform
+This script installs dependencies and prepares the frontend environment.
 
 ```bash
-terraform init
-terraform plan
-terraform apply -auto-approve
+./deploy.sh
 ```
 
-> 🔁 Save the **public** and **private IPs** of both backend and frontend EC2 instances.
-
-
-## 🚀 5. Now the backend server will Run automatically 
-
-
-## 🎨 6. Run the Frontend
-### a) Configure Ansible Inventory
-
-Edit the inventory:
-
-```bash
-nano ../ansible/inventory.ini
-```
-
-Add your frontend EC2 public IP:
-
-```ini
-[frontend]
-<frontend_public_ip> ansible_user=ec2-user ansible_ssh_private_key_file=~/.gkey.pem
-```
-
-
-
-### b) Run Ansible Playbook
-
-```bash
-cd ../ansible
-ansible-playbook -i inventory.ini playbook.yml
-```
-
-
-
-### c) SSH into Frontend and Run App
-
-```bash
-ssh -i ~/.gkey.pem ec2-user@<frontend_server_public_ip>
-```
-
-
-
-### d) Update API URL in Frontend
-
-Edit the file:
-
-```bash
-nano pokemon3/frontend/db.py
-```
-
-Update this line:
-
-```python
-API_BASE_URL = "http://<backend_private_ip>:5000"
-```
-
-### e) Run App
-
+##  5. Run the Frontend
 ```bash
 cd pokemon3/frontend
 python3 main.py
