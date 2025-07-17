@@ -1,6 +1,6 @@
 import requests
 
-#API_BASE_URL = "http://<backend_server_private_ip>:5000"
+#API_BASE_URL = "http://<backend_server_private_ip>:5000" will be added using userdata
 
 
 def get_pokemon_from_db(name):
