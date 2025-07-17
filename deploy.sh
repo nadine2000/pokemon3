@@ -11,7 +11,6 @@ aws ec2 create-key-pair \
 chmod 400 ~/.gkey.pem
 
 terraform init
-terraform plan
 terraform apply -auto-approve
 
 frontend_ip=$(terraform output -raw game_server_public_ip)
